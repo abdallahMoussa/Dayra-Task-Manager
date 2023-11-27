@@ -80,7 +80,7 @@ const Tasks = () => {
         </div>
       ) : (
         <div className="w-full h-full text-2xl  dark:text-teal-500 text-teal-900 flex justify-center items-center">
-          <span className=" ">No {path} tasks</span>
+          <span className=" ">No {path == "tasks" ? "" : path} tasks</span>
           <InlineIcon icon="iconoir:file-not-found" className="mx-2" />
         </div>
       )}

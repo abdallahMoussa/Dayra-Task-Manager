@@ -1,7 +1,6 @@
 import "./App.css";
 import React, { Suspense, useContext } from "react";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
-import Home from "./pages/Landing/Home.jsx";
 import User from "./services/middlewares/User";
 import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import { AuthProvider } from "./context/AuthContext";
@@ -18,8 +17,10 @@ import Logo from "./components/UI/Logo.jsx";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
+import SuspinseLoading from "./components/UI/SuspenseLoading.jsx";
 
 const SignUp = React.lazy(() => import("./pages/SignUp/SignUp.jsx"));
+const Home = React.lazy(() => import("./pages/Landing/Home.jsx"));
 
 function App() {
   const { isArabic } = useContext(ThemeContext);
@@ -41,7 +42,7 @@ function App() {
 
       <GuestLayout />
       <Logo />
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<SuspinseLoading />}>
         <Routes>
           <Route
             path="/"

@@ -11,7 +11,7 @@ const Home = () => {
       <Waves className="absolute bottom-0 fill-teal-500 md:h-32 h-28  z-10" />
       <div
         dir={langDir}
-        className="hero w-full h-full flex md:flex-row flex-col-reverse justify-between items-center"
+        className="hero w-full h-full flex md:flex-row flex-col-reverse justify-between items-center md:pt-0 pt-10"
       >
         <div
           dir={langDir}
@@ -106,12 +106,3 @@ const Home = () => {
 };
 
 export default Home;
-
-{
-  /* <Link className=" rounded-xl  bg-teal-400 max-w-max mb-10 " to="/signup">
-        SignUp
-      </Link>
-      <Link className="block rounded-xl bg-teal-400 max-w-max " to="/login">
-        LogIn
-      </Link> */
-}

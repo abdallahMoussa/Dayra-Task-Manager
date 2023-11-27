@@ -17,21 +17,8 @@ export default function SignUp() {
 
   const signUpHandler = async (user) => {
     let userData = user;
-    // if (!isOnline) {
     userData = await firebaseAPI.signUp(user, setIsLoading);
     addUser(userData);
-    // } else {
-    //   firebaseAPI.loader();
-    //   setTimeout(() => {
-    //     firebaseAPI.successAlert(setIsLoading, {
-    //       title_en: "Account Created Successfully",
-    //       title_ar: "تم إنشاء الحساب بنجاح",
-    //       text_en: "You are now Offline, Your data will be saved temporarily..",
-    //       text_ar: "انت غير متصل بالانترنت, بياناتك ستحفظ بشكل مؤقت",
-    //     });
-    //     addUser(userData);
-    //   }, 2000);
-    // }
   };
 
   const signWithGoogle = async () => {
@@ -45,7 +32,7 @@ export default function SignUp() {
         dir={langDir}
         className=" m-0 bg-white dark:bg-slate-950  flex justify-center flex-1"
       >
-        <div className="lg:w-1/2 w-full md:p-12 p-3 pt-0">
+        <div className="lg:w-1/2 w-full md:p-12 p-3 pt-10 md:pt-0">
           <div className="mt-8 flex flex-col items-center">
             <h1
               data-aos={"fade-top"}
