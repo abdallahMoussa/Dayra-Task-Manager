@@ -1,4 +1,5 @@
 # Dayra Task Manager
+![logo](https://github.com/abdallahMoussa/Dayra-Task-Manager/assets/55410420/3ea44d22-b5b0-4338-b924-5b4d722d9b78)
 
 ## Overview
 
