@@ -13,8 +13,10 @@ const GuestLayout = () => {
   useEffect(() => {
     if (!auth) {
       setRendered(true);
+    } else {
+      setRendered(false);
     }
-  }, []);
+  }, [auth]);
   return (
     <>
       {rendered ? (

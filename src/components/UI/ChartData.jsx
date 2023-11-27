@@ -54,7 +54,7 @@ const TaskChartLast7Days = () => {
         labels: daysOfWeek,
         datasets: [
           {
-            label: trans("Active Tasks", "المهام النشطه"),
+            label: trans("Active ", " النشطه"),
             data: [12, 19, 3, 5, 2, 3, 10],
             borderColor: "#2dd4bf ",
             borderWidth: 2,
@@ -62,7 +62,7 @@ const TaskChartLast7Days = () => {
             tension: 0.4,
           },
           {
-            label: trans("Completed Tasks", "المهام المكتمله"),
+            label: trans("Completed ", " المكتمله"),
             data: [5, 9, 15, 20, 7, 10, 3],
             borderColor: "rgba(54, 162, 235, 1)",
             borderWidth: 2,

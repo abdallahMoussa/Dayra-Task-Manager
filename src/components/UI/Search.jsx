@@ -95,7 +95,7 @@ const Search = ({ setFilteredTasks, setIsLoading }) => {
           className="text-slate-400 pr-4 max-w-max top-0"
           htmlFor="search"
         >
-          {trans("Task Name...", "إسم المهمه...")}
+          {trans("Search Name...", "بحث بالاسم...")}
         </label>
       </div>
       <div className="filter relative mx-3 px-3 pt-2 cursor-pointer drop-shadow-sm rounded-md bg-slate-200 flex">
