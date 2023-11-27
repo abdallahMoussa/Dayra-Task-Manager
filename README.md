@@ -4,7 +4,7 @@
 
 ## Overview
 
-The project provides users with the capability to manage tasks, edit task details (such as title, description, and status), and visualize task data. It incorporates the use of Swal (SweetAlert2) for notifications and Iconify for icons, and utilizes Chart.js for chart visualization.
+The project provides users with the capability to manage tasks, edit task details (such as title, description, and status), and visualize task data.
 
 ## Features
 
