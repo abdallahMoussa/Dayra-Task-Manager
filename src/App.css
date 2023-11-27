@@ -1,38 +1,42 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700;900&family=Comfortaa:wght@400;600;700&family=Comforter&family=IBM+Plex+Sans+Arabic:wght@400;600;700&family=Kufam:wght@400;600;700;900&family=Rubik:wght@400;600;700;900&family=Tajawal:wght@400;500;700;900&family=Vibes&display=swap"); */
+
+@font-face {
+  font-family: 'Almarai'; 
+  src: url('assets/fonts/Almarai-Regular.ttf') ;
+}
+
 .App {
   text-align: center;
+  font-family: "Almarai";
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.font-Almarai{
+  font-family: "Almarai",sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.Toastify__progress-bar--success {
+  background: #2dd4bf !important;
+}
+.Toastify__toast-icon svg{
+  fill:#2dd4bf !important
+}
+.Toastify__toast-body{
+  font-family: "Almarai" !important;
+}
+.custome-animate{
+animation: flow 10s linear infinite ;
+}
+
+@keyframes flow {
+  0%,100%{
+    transform: translateY(-5%);
+  }
+  50%{
+    transform: translateY(0);
+    
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.email-field, .password-field {
+  width: 49% !important;
 }

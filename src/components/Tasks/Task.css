@@ -1,0 +1,29 @@
+.title-task-input , #description{
+    width: 99%;
+    margin: 5px auto;
+    border-radius: 5px;
+    transition: .5s;
+    padding: 15px 10px;
+    background-color: rgba(0, 0, 0, .05);
+    outline: none;
+  }
+  .title-task-input:focus, #description:focus{
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, .2);
+    color: black;
+  }
+#description{
+    margin-top: 5px;
+    resize: none;
+}
+#completed{
+    width: 20px;
+    height: 20px;
+    margin: 0px 10px;
+}
+
+#options{
+    width: 100%;
+    display: flex;
+    padding: 5px;
+}

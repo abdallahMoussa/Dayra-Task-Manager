@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Dayra Task Manager
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+The project provides users with the capability to manage tasks, edit task details (such as title, description, and status), and visualize task data. It incorporates the use of Swal (SweetAlert2) for notifications and Iconify for icons, and utilizes Chart.js for chart visualization.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+### Frontend
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Built using React.js for frontend development.
+- State management handled with the Context API.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Backend
 
-### `npm test`
+- Utilizes Firebase for user authentication and as a backend service.
+- Enables signup and login functionalities for users.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Task Management
 
-### `npm run build`
+- Allows users to add tasks, edit task details (title, description, and status).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### External Libraries/Frameworks
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Integrates Swal (SweetAlert2) for user-friendly notifications.
+- Utilizes Iconify for icons and visualization.
+- Implements Chart.js for chart visualization.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## How to Run Locally
 
-### `npm run eject`
+1. Clone this repository.
+2. Navigate to the project directory.
+3. Install dependencies: `npm install`.
+4. Start the development server: `npm start`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Additional Information
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Ensure Firebase setup and configuration for proper backend functionality.
+- API keys and configurations might be required for Firebase integration.
+- For any issues or feature requests, please open an issue or submit a pull request.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Credits
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- React.js - [Link to React](https://reactjs.org/)
+- Firebase - [Link to Firebase](https://firebase.google.com/)
+- Swal (SweetAlert2) - [Link to Swal](https://sweetalert2.github.io/)
+- Iconify - [Link to Iconify](https://iconify.design/)
+- Chart.js - [Link to Chart.js](https://www.chartjs.org/)
