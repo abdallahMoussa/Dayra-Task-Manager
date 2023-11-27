@@ -46,10 +46,8 @@ const Tasks = () => {
         });
 
         setTasks(tasksData);
-        setIsLoading(false);
-      } else {
-        setIsLoading(false);
       }
+      setIsLoading(false);
     } catch (e) {
       toast.error(trans("unexpected error occurred", "وقع خطأ تحميل البيانات"));
       setIsLoading(false);
@@ -57,9 +55,11 @@ const Tasks = () => {
   };
 
   useEffect(() => {
-    if (isOnline()) {
-      fetchTasks();
-    }
+    setTimeout(() => {
+      if (isOnline()) {
+        fetchTasks();
+      }
+    }, 500);
   }, []);
   return (
     <div className="w-full h-screen">

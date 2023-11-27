@@ -28,9 +28,9 @@ export default function LogIn() {
     <div className="min-h-screen w-full bg-gray-100 flex justify-center ">
       <div
         dir={langDir}
-        className=" m-0 bg-white dark:bg-slate-950  flex justify-center items-center "
+        className=" m-0 bg-white dark:bg-slate-950  flex justify-center  flex-1 "
       >
-        <div className="lg:w-1/2 w-full md:p-12 p-3 pt-10 md:pt-0">
+        <div className="lg:w-1/2 w-full md:p-12 p-3 flex items-center ">
           <div className="mt-8 flex flex-col items-center">
             <h1
               data-aos={"fade-top"}

@@ -28,15 +28,52 @@ const signUp = async (userData, setIsLoading) => {
         title_ar: "تم إنشاء الحساب بنجاح",
       });
 
-      return userData(user);
+      return getUserData(user);
     }
   } catch (error) {
-    failureAlert(setIsLoading, {
-      title_en: "Oops...",
-      title_ar: "خطأ...",
-      text_en: "Something went wrong!",
-      text_ar: "لقد حدث خطأ اثناء التسجيل",
-    });
+    setIsLoading(false);
+    if (error.code && error.message) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+
+      switch (errorCode) {
+        case "auth/invalid-email":
+          failureAlert(setIsLoading, {
+            text_en: "Invalid email address.",
+            text_ar: "عنوان البريد الإلكتروني غير صالح.",
+          });
+          break;
+
+        case "auth/email-already-in-use":
+          failureAlert(setIsLoading, {
+            text_en: "Email address already exist.",
+            text_ar: "عنوان البريد الإلكتروني مسجل مسبقا.",
+          });
+          break;
+        case "auth/weak-password":
+          failureAlert(setIsLoading, {
+            text_en: "Password should be at least 6 characters.",
+            text_ar: "كلمة المرور أقل من 6 أحرف.",
+          });
+          break;
+
+        default:
+          failureAlert(setIsLoading, {
+            title_en: "Oops...",
+            title_ar: "خطأ...",
+            text_en: errorMessage,
+            text_ar: errorMessage,
+          });
+          break;
+      }
+    } else {
+      failureAlert(setIsLoading, {
+        title_en: "Oops...",
+        title_ar: "خطأ...",
+        text_en: "Something went wrong!",
+        text_ar: "لقد حدث خطأ اثناء التسجيل",
+      });
+    }
   }
 };
 
@@ -53,7 +90,7 @@ const signInWithGoogle = async (setIsLoading) => {
         title_en: "Login Successfully",
         title_ar: "تم تسجيل الدخول بنجاح",
       });
-      return userData(user);
+      return getUserData(user);
     }
   } catch (error) {
     failureAlert(setIsLoading, {});
@@ -74,7 +111,7 @@ const logIn = async (credentials, setIsLoading) => {
       title_ar: "تم تسجيل الدخول بنجاح",
     });
 
-    return userData(user);
+    return getUserData(user);
   } catch (error) {
     failureAlert(setIsLoading, {
       title_en: "Invalid Credentials...",
@@ -143,7 +180,7 @@ const loader = (
   });
 };
 
-const userData = (user) => {
+const getUserData = (user) => {
   return {
     token: user.accessToken,
     name: user.reloadUserInfo.displayName,

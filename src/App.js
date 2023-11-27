@@ -1,26 +1,26 @@
 import "./App.css";
 import React, { Suspense, useContext } from "react";
-import { Route, Routes, useLocation, Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import User from "./services/middlewares/User";
-import Dashboard from "./pages/Dashboard/Dashboard.jsx";
-import { AuthProvider } from "./context/AuthContext";
-import ThemeContext, { ThemeProvider } from "./context/ThemeContext.js";
+import ThemeContext from "./context/ThemeContext.js";
 import Guest from "./services/middlewares/Guest.jsx";
-import GuestLayout from "./components/UI/GuestLayout.jsx";
-import Loading from "./components/UI/Loading.jsx";
-import Tasks from "./pages/Dashboard/Tasks.jsx";
-import DashboardHome from "./pages/Dashboard/DashboardHome.jsx";
-import LogIn from "./pages/LogIn/LogIn.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Logo from "./components/UI/Logo.jsx";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
-import SuspinseLoading from "./components/UI/SuspenseLoading.jsx";
+import SuspenseLoading from "./components/UI/SuspenseLoading.jsx";
 
 const SignUp = React.lazy(() => import("./pages/SignUp/SignUp.jsx"));
+const LogIn = React.lazy(() => import("./pages/LogIn/LogIn.jsx"));
 const Home = React.lazy(() => import("./pages/Landing/Home.jsx"));
+const Dashboard = React.lazy(() => import("./pages/Dashboard/Dashboard.jsx"));
+const Tasks = React.lazy(() => import("./pages/Dashboard/Tasks.jsx"));
+const GuestLayout = React.lazy(() => import("./components/UI/GuestLayout.jsx"));
+const DashboardHome = React.lazy(() =>
+  import("./pages/Dashboard/DashboardHome.jsx")
+);
 
 function App() {
   const { isArabic } = useContext(ThemeContext);
@@ -28,7 +28,7 @@ function App() {
   AOS.init();
 
   return (
-    <div className="App dark:bg-slate-900 bg-slate-100 overflow-hidden">
+    <div className="App dark:bg-slate-900 min-h-screen bg-slate-100 overflow-hidden">
       <ToastContainer
         position={!isArabic ? "top-left" : "top-right"}
         autoClose={3000}
@@ -42,7 +42,7 @@ function App() {
 
       <GuestLayout />
       <Logo />
-      <Suspense fallback={<SuspinseLoading />}>
+      <Suspense fallback={<SuspenseLoading />}>
         <Routes>
           <Route
             path="/"
