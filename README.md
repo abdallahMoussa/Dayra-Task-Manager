@@ -1,4 +1,5 @@
 # Dayra Task Manager
+
 ![logo](https://github.com/abdallahMoussa/Dayra-Task-Manager/assets/55410420/3ea44d22-b5b0-4338-b924-5b4d722d9b78)
 
 ## Overview
@@ -42,8 +43,8 @@ The project provides users with the capability to manage tasks, edit task detail
 
 ## Credits
 
-- React.js - [Link to React](https://reactjs.org/)
-- Firebase - [Link to Firebase](https://firebase.google.com/)
-- Swal (SweetAlert2) - [Link to Swal](https://sweetalert2.github.io/)
-- Iconify - [Link to Iconify](https://iconify.design/)
-- Chart.js - [Link to Chart.js](https://www.chartjs.org/)
+- [React.js](https://reactjs.org/)
+- [Firebase](https://firebase.google.com/)
+- [Swal](https://sweetalert2.github.io/)
+- [Iconify](https://iconify.design/)
+- [Chart.js](https://www.chartjs.org/)
