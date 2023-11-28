@@ -12,18 +12,22 @@ The project provides users with the capability to manage tasks, edit task detail
 
 - Built using React.js for frontend development.
 - State management handled with the Context API.
+- Dark Mode available for enhanced user experience.
+- Multilanguage support for diverse user preferences.
 
 ### Backend
 
 - Utilizes Firebase for user authentication and as a backend service.
 - Enables signup and login functionalities for users.
-- Enables localStorage to facilitate user usage without internet
+- Enables localStorage to facilitate user usage without internet.
 
 ### Key Features
 
-- User authentication with Firebase
-- Task management functionalities
-- Offline support using localStorage
+- User authentication with Firebase.
+- Task management functionalities.
+- Offline support using localStorage.
+- Dark Mode for enhanced user experience.
+- Multilanguage support for diverse user preferences.
 
 ### Task Management
 
