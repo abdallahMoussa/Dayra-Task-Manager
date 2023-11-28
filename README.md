@@ -12,11 +12,22 @@ The project provides users with the capability to manage tasks, edit task detail
 
 - Built using React.js for frontend development.
 - State management handled with the Context API.
+- Dark Mode available for enhanced user experience.
+- Multilanguage support for diverse user preferences.
 
 ### Backend
 
 - Utilizes Firebase for user authentication and as a backend service.
 - Enables signup and login functionalities for users.
+- Enables localStorage to facilitate user usage without internet.
+
+### Key Features
+
+- User authentication with Firebase.
+- Task management functionalities.
+- Offline support using localStorage.
+- Dark Mode for enhanced user experience.
+- Multilanguage support for diverse user preferences.
 
 ### Task Management
 
@@ -35,12 +46,6 @@ The project provides users with the capability to manage tasks, edit task detail
 3. Install dependencies: `npm install`.
 4. Start the development server: `npm start`.
 
-## Additional Information
-
-- Ensure Firebase setup and configuration for proper backend functionality.
-- API keys and configurations might be required for Firebase integration.
-- For any issues or feature requests, please open an issue or submit a pull request.
-
 ## Credits
 
 - [React.js](https://reactjs.org/)
@@ -48,3 +53,6 @@ The project provides users with the capability to manage tasks, edit task detail
 - [Swal](https://sweetalert2.github.io/)
 - [Iconify](https://iconify.design/)
 - [Chart.js](https://www.chartjs.org/)
+
+## Demo 
+- [Live Preview](https://dayra-task-manager.vercel.app/)
