@@ -4,19 +4,57 @@ import Button from "../../components/UI/Button";
 import Form from "../../components/Form/Form";
 import firebaseAPI from "../../services/http/firebaseAPI";
 import { useContext, useState } from "react";
-import ThemeContext from "../../context/ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import AuthContext from "../../context/AuthContext";
 import { Icon } from "@iconify/react";
 import login from "../../assets/imgs/login.png";
+import LocalStore from "../../services/http/localStore";
+import Swal from "sweetalert2";
+import AppContext from "../../context/AppContext";
+
 export default function LogIn() {
   const [isLoading, setIsLoading] = useState(false);
   const [isGmailLoading, setIsGmailLoading] = useState(false);
   const { langDir, trans, isArabic } = useContext(ThemeContext);
   const { addUser } = useContext(AuthContext);
+  const { setIsLocal } = useContext(AppContext);
 
   const loginHandler = async (user) => {
     let userData = await firebaseAPI.logIn(user, setIsLoading);
-    addUser(userData);
+
+    if (userData == "noConnection") {
+      Swal.fire({
+        icon: "question",
+        title: trans(
+          "Is there an internet problem connection?",
+          "هل يوجد لديك مشكله بالاتصال بالإنترنت؟"
+        ),
+        text: trans("you can use app internet", "يمكنك الاستخدام بدون انترنت"),
+        confirmButtonText: trans("Use Without Internet", "البدء بدون انترنت "),
+        cancelButtonText: trans("Cancel", "اغلاق"),
+        showCancelButton: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          firebaseAPI.loader("Login...", "جاري تسجيل الدخول...");
+
+          let loginUser = LocalStore.login(user);
+          if (loginUser) {
+            setTimeout(() => {
+              firebaseAPI.successAlert(setIsLoading, {});
+              addUser(loginUser);
+              setIsLocal(true);
+            }, 2000);
+          } else {
+            firebaseAPI.failureAlert(setIsLoading, {
+              text_en: "Please Enter The Correct Email and Password",
+              text_ar: "من فضلك تأكد من البريد وكلمة المرور",
+            });
+          }
+        }
+      });
+    } else {
+      addUser(userData);
+    }
   };
 
   const signWithGoogle = async () => {
@@ -30,7 +68,7 @@ export default function LogIn() {
         dir={langDir}
         className=" m-0 bg-white dark:bg-slate-950  flex justify-center  flex-1 "
       >
-        <div className="lg:w-1/2 w-full md:p-12 p-3 flex items-center ">
+        <div className="lg:w-1/2 w-full md:p-12 p-3 flex items-center justify-center ">
           <div className="mt-8 flex flex-col items-center">
             <h1
               data-aos={"fade-top"}

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import ThemeContext from "../../context/ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import DarkmodeButton from "./DarkmodeButton";
 import LangButton from "./LangButton";
 import AuthContext from "../../context/AuthContext";

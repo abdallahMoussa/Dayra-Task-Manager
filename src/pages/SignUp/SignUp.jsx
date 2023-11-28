@@ -4,21 +4,48 @@ import Button from "../../components/UI/Button";
 import Form from "../../components/Form/Form";
 import firebaseAPI from "../../services/http/firebaseAPI";
 import { useContext, useState } from "react";
-import ThemeContext from "../../context/ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import AuthContext from "../../context/AuthContext";
 import { Icon } from "@iconify/react";
 import signup from "../../assets/svgs/signup.svg";
-import { isOffline, isOnline } from "../../services/http/connection";
+import Swal from "sweetalert2";
+import AppContext from "../../context/AppContext";
+import LocalStore from "../../services/http/localStore";
 export default function SignUp() {
   const [isLoading, setIsLoading] = useState(false);
   const [isGmailLoading, setIsGmailLoading] = useState(false);
   const { langDir, trans, isArabic } = useContext(ThemeContext);
   const { addUser } = useContext(AuthContext);
-
+  const { setIsLocal } = useContext(AppContext);
   const signUpHandler = async (user) => {
     let userData = user;
     userData = await firebaseAPI.signUp(user, setIsLoading);
-    addUser(userData);
+
+    if (userData == "noConnection") {
+      Swal.fire({
+        icon: "question",
+        title: trans(
+          "Is there an internet problem connection?",
+          "هل يوجد لديك مشكله بالاتصال بالإنترنت؟"
+        ),
+        text: trans("you can use app internet", "يمكنك الاستخدام بدون انترنت"),
+        confirmButtonText: trans("Use Without Internet", "البدء بدون انترنت "),
+        cancelButtonText: trans("Cancel", "اغلاق"),
+        showCancelButton: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          firebaseAPI.loader("SignUp..", "جاري انشاء الحساب...");
+          setTimeout(() => {
+            firebaseAPI.successAlert(setIsLoading, {});
+            addUser(user);
+            LocalStore.signup(user);
+            setIsLocal(true);
+          }, 2000);
+        }
+      });
+    } else {
+      addUser(userData);
+    }
   };
 
   const signWithGoogle = async () => {
@@ -32,7 +59,7 @@ export default function SignUp() {
         dir={langDir}
         className=" m-0 bg-white dark:bg-slate-950  flex justify-center flex-1"
       >
-        <div className="lg:w-1/2 w-full md:p-12 p-3  flex items-center ">
+        <div className="lg:w-1/2 w-full md:p-12 p-3  flex items-center justify-center ">
           <div className="mt-8 flex flex-col items-center">
             <h1
               data-aos={"fade-top"}

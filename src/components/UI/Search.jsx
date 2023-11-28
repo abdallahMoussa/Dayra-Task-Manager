@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import AppContext from "../../context/AppContext";
 import { lastSegment } from "../../services/http/connection";
 import "./Search.css";
-import ThemeContext from "../../context/ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import { InlineIcon } from "@iconify/react";
 const Search = ({ setFilteredTasks, setIsLoading }) => {
   const [searchQuery, setSearchQuery] = useState("");

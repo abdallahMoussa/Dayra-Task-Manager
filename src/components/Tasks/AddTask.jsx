@@ -2,7 +2,7 @@ import { InlineIcon } from "@iconify/react";
 import React, { useState, useEffect, useContext } from "react";
 import Swal from "sweetalert2";
 import "./Task.css";
-import ThemeContext from "../../context/ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import { auth, db } from "../../firebase-config";
 import { doc, runTransaction, serverTimestamp } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +15,7 @@ const AddTask = () => {
   const [description, setDescription] = useState("");
   const [completed, setCompleted] = useState(false);
   const { trans, langDir } = useContext(ThemeContext);
-  const { taskCRUD } = useContext(AppContext);
+  const { taskCRUD, isLocal } = useContext(AppContext);
 
   const addTaskHandler = async () => {
     let task = {};
@@ -73,7 +73,11 @@ const AddTask = () => {
             Swal.showLoading();
           },
         });
-        createTask(task);
+        if (isLocal) {
+          taskCRUD(task, "insert");
+        } else {
+          createTask(task);
+        }
       }
     });
   };
@@ -81,23 +85,24 @@ const AddTask = () => {
   const createTask = async (task) => {
     try {
       const currentUser = auth.currentUser;
+      if (currentUser || isLocal) {
+        if (!isLocal) {
+          const userUid = currentUser.uid;
+          const taskRef = doc(
+            db,
+            `users/${userUid}/tasks`,
+            randomstring.generate(7)
+          );
 
-      if (currentUser) {
-        const userUid = currentUser.uid;
-        const taskRef = doc(
-          db,
-          `users/${userUid}/tasks`,
-          randomstring.generate(7)
-        );
-
-        await runTransaction(db, async (transaction) => {
-          let docSnapshot = await transaction.get(taskRef);
-          if (!docSnapshot.exists()) {
-            transaction.set(taskRef, task);
-          } else {
-            transaction.update(taskRef, { completed: true });
-          }
-        });
+          await runTransaction(db, async (transaction) => {
+            let docSnapshot = await transaction.get(taskRef);
+            if (!docSnapshot.exists()) {
+              transaction.set(taskRef, task);
+            } else {
+              transaction.update(taskRef, { completed: true });
+            }
+          });
+        }
         taskCRUD(task, "insert");
 
         Swal.fire({
@@ -107,7 +112,6 @@ const AddTask = () => {
           confirmButtonText: trans("Ok", "حسناً"),
         });
 
-        // Reset form or state after successful task creation
         setTitle("");
         setDescription("");
         setCompleted(false);

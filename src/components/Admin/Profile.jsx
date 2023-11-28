@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import DarkmodeButton from "../UI/DarkmodeButton";
 import LangButton from "../UI/LangButton";
-import ThemeContext from "../../context/ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import profileImg from "../../assets/imgs/dayra-logo.png";
 import "firebase/database";
 import AuthContext from "../../context/AuthContext";

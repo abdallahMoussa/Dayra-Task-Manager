@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Waves from "../../components/Waves/Waves";
 import todo from "../../assets/imgs/todo.png";
-import ThemeContext from "../../context/ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import ButtonGlass from "../../components/UI/ButtonGlass";
 import { InlineIcon } from "@iconify/react";
 const Home = () => {

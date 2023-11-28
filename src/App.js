@@ -2,7 +2,7 @@ import "./App.css";
 import React, { Suspense, useContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import User from "./services/middlewares/User";
-import ThemeContext from "./context/ThemeContext.js";
+import { ThemeContext } from "./context/ThemeContext.js";
 import Guest from "./services/middlewares/Guest.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

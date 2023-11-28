@@ -1,6 +1,6 @@
 import { Switch } from "@headlessui/react";
 import React, { useContext } from "react";
-import ThemeContext from "../../context/ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import dark from "../../assets/imgs/dark.png";
 import light from "../../assets/imgs/light.png";
 import AuthContext from "../../context/AuthContext";

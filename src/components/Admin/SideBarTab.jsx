@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
-import ThemeContext from "../../context/ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import { Link, useLocation } from "react-router-dom";
 import { lastSegment } from "../../services/http/connection";
 

@@ -1,19 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
-import ThemeContext from "../../context/ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import ReactTimeAgo from "react-time-ago";
 import { doc, deleteDoc, updateDoc } from "firebase/firestore";
 import { auth, db } from "../../firebase-config";
 import { InlineIcon } from "@iconify/react";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import AppContext from "../../context/AppContext";
+import AuthContext from "../../context/AuthContext";
 
 const Task = ({ task }) => {
   const [direction, setDirection] = useState("ltr");
   const [data, setData] = useState({ ...task });
   const { setTasks, taskCRUD } = useContext(AppContext);
-
+  const { isLocal } = useContext(AuthContext);
   const { trans, langDir } = useContext(ThemeContext);
 
   const deleteHandler = () => {
@@ -25,7 +25,11 @@ const Task = ({ task }) => {
       cancelButtonText: trans("Cancel", "إلغاء"),
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteTask();
+        if (isLocal) {
+          taskCRUD(task, "delete");
+        } else {
+          deleteTask();
+        }
       }
     });
   };
@@ -42,7 +46,6 @@ const Task = ({ task }) => {
         setData(null);
         taskCRUD(task, "delete");
       } else {
-        // Handle case when no user is signed in
       }
     } catch (error) {
       toast.error(
@@ -95,7 +98,11 @@ const Task = ({ task }) => {
             Swal.showLoading();
           },
         });
-        editTask(task);
+        if (isLocal) {
+          taskCRUD(task, "update");
+        } else {
+          editTask(task);
+        }
       }
     });
   };
@@ -120,12 +127,15 @@ const Task = ({ task }) => {
       if (result.isConfirmed) {
         let temp = { ...data };
         temp.completed = !temp.completed;
+        if (isLocal) {
+          taskCRUD(temp, "update");
+        } else {
+          editTask(temp);
+        }
         setData({ ...temp });
-        editTask(temp);
       }
     });
   };
-
   const editTask = async (updatedData) => {
     try {
       const currentUser = auth.currentUser;
@@ -140,8 +150,6 @@ const Task = ({ task }) => {
           trans("Task Updated successfully", "تم تعديل المهمه بنجاح")
         );
         taskCRUD(updatedData, "update");
-      } else {
-        // Handle case when no user is signed in
       }
 
       Swal.close();

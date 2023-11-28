@@ -29,6 +29,8 @@ const signUp = async (userData, setIsLoading) => {
       });
 
       return getUserData(user);
+    } else {
+      return "noConnection";
     }
   } catch (error) {
     setIsLoading(false);
@@ -99,19 +101,23 @@ const signInWithGoogle = async (setIsLoading) => {
 
 const logIn = async (credentials, setIsLoading) => {
   try {
-    setIsLoading(true);
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      credentials.email,
-      credentials.password
-    );
-    const user = userCredential.user;
-    successAlert(setIsLoading, {
-      title_en: "Login Successfully",
-      title_ar: "تم تسجيل الدخول بنجاح",
-    });
+    if (isOnline()) {
+      setIsLoading(true);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        credentials.email,
+        credentials.password
+      );
+      const user = userCredential.user;
+      successAlert(setIsLoading, {
+        title_en: "Login Successfully",
+        title_ar: "تم تسجيل الدخول بنجاح",
+      });
 
-    return getUserData(user);
+      return getUserData(user);
+    } else {
+      return "noConnection";
+    }
   } catch (error) {
     failureAlert(setIsLoading, {
       title_en: "Invalid Credentials...",

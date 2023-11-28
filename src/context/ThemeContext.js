@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 
 const ThemeContext = createContext();
 
-export const ThemeProvider = ({ children }) => {
+const ThemeProvider = ({ children }) => {
   const [isArabic, setIsArabic] = useState(true);
   const [langDir, setLangDir] = useState("rtl");
   const [darkmode, setDarkmode] = useState(true);
@@ -61,4 +61,4 @@ export const ThemeProvider = ({ children }) => {
   );
 };
 
-export default ThemeContext;
+export { ThemeContext, ThemeProvider };

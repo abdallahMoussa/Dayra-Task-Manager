@@ -5,13 +5,15 @@ import Search from "../../components/UI/Search";
 import Task from "../../components/Tasks/Task";
 import AppContext from "../../context/AppContext";
 import { toast } from "react-toastify";
-import ThemeContext from "../../context/ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import { isOnline, lastSegment } from "../../services/http/connection";
 import Loading from "../../components/UI/Loading";
 import { InlineIcon } from "@iconify/react";
+import AuthContext from "../../context/AuthContext";
+import LocalStore from "../../services/http/localStore";
 
 const Tasks = () => {
-  const { tasks, setTasks } = useContext(AppContext);
+  const { tasks, setTasks, isLocal } = useContext(AppContext);
   const [data, setData] = useState([]);
   const { trans } = useContext(ThemeContext);
   const [isLoading, setIsLoading] = useState(true);
@@ -25,6 +27,7 @@ const Tasks = () => {
       temp = tasks.filter((task) => !task.completed);
     }
     setData((prev) => temp);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -47,7 +50,6 @@ const Tasks = () => {
 
         setTasks(tasksData);
       }
-      setIsLoading(false);
     } catch (e) {
       toast.error(trans("unexpected error occurred", "وقع خطأ تحميل البيانات"));
       setIsLoading(false);
@@ -56,8 +58,14 @@ const Tasks = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      if (isOnline()) {
+      if (!isLocal && isOnline()) {
         fetchTasks();
+      }
+      if (isLocal) {
+        let tempTasks = LocalStore.getTasks();
+        if (tempTasks) {
+          setTasks(tempTasks);
+        }
       }
     }, 500);
   }, []);

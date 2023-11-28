@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react";
 import React, { useContext } from "react";
-import ThemeContext from "../../context/ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import AuthContext from "../../context/AuthContext";
 import Swal from "sweetalert2";
 

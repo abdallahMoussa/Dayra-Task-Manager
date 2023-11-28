@@ -5,6 +5,7 @@ const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
+  const [isLocal, setIsLocal] = useState(false);
 
   const taskCRUD = (task, action) => {
     let temp = [...tasks];
@@ -20,8 +21,23 @@ export const AppProvider = ({ children }) => {
     } else if (action === "delete") {
       temp = temp.filter((t) => t.id !== task.id);
     }
-
     setTasks(temp);
+    addToLocalStorage(temp);
+  };
+
+  const addToLocalStorage = (tempTasks) => {
+    let user = localStorage.getItem("user");
+    if (user) {
+      try {
+        user = JSON.parse(user);
+        const userEmail = user.email;
+        localStorage.setItem(`${userEmail}-tasks`, JSON.stringify(tempTasks));
+      } catch (error) {
+        console.error("Parsing user data failed:", error);
+      }
+    } else {
+      console.error("User data not found in localStorage");
+    }
   };
 
   return (
@@ -30,6 +46,8 @@ export const AppProvider = ({ children }) => {
         tasks,
         setTasks,
         taskCRUD,
+        isLocal,
+        setIsLocal,
       }}
     >
       {children}

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
-import ThemeContext from "../../context/ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import AppContext from "../../context/AppContext";
 
 const TaskChartLast7Days = () => {

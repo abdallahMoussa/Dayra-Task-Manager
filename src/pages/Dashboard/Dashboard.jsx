@@ -7,7 +7,6 @@ const Dashboard = () => {
   return (
     <Container>
       <SideBar />
-
       <Outlet />
     </Container>
   );
