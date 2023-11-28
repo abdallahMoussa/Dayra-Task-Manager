@@ -50,4 +50,5 @@ The project provides users with the capability to manage tasks, edit task detail
 - [Iconify](https://iconify.design/)
 - [Chart.js](https://www.chartjs.org/)
 
-## Demo : [Live Preview](https://dayra-task-manager.vercel.app/)
+## Demo 
+- [Live Preview](https://dayra-task-manager.vercel.app/)
