@@ -41,8 +41,10 @@ const signUp = async (userData, setIsLoading) => {
       switch (errorCode) {
         case "auth/invalid-email":
           failureAlert(setIsLoading, {
-            text_en: "Invalid email address.",
-            text_ar: "عنوان البريد الإلكتروني غير صالح.",
+            title_en: "Invalid email address.",
+            title_ar: " البريد الإلكتروني غير صالح.",
+            text_en: " ex: example@example.com",
+            text_ar: " ex: example@example.com",
           });
           break;
 
