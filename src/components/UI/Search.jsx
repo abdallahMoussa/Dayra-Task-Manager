@@ -98,7 +98,7 @@ const Search = ({ setFilteredTasks, setIsLoading }) => {
           {trans("Search Name...", "بحث بالاسم...")}
         </label>
       </div>
-      <div className="filter relative mx-3 px-3 pt-2 cursor-pointer drop-shadow-sm rounded-md bg-slate-200 flex">
+      <div className="filter relative mx-3 px-3 pt-2 cursor-pointer drop-shadow-sm rounded-md dark:bg-slate-400 bg-slate-200 flex">
         <div onClick={openFilterHandler} className="w-full h-full flex">
           <span className="w-full h-full">{trans("filter", "تصنيف")}</span>
           <InlineIcon icon="clarity:filter-solid" className=" m-1" />
