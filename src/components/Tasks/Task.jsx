@@ -12,7 +12,7 @@ import AuthContext from "../../context/AuthContext";
 const Task = ({ task }) => {
   const [direction, setDirection] = useState("ltr");
   const [data, setData] = useState({ ...task });
-  const { setTasks, taskCRUD } = useContext(AppContext);
+  const { taskCRUD } = useContext(AppContext);
   const { isLocal } = useContext(AuthContext);
   const { trans, langDir } = useContext(ThemeContext);
 

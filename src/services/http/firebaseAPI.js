@@ -20,7 +20,7 @@ const signUp = async (userData, setIsLoading) => {
       );
       const user = userCredential.user;
 
-      await updateProfile(user, { displayName: user.name });
+      await updateProfile(user, { displayName: userData.name });
       setIsLoading(false);
 
       successAlert(setIsLoading, {
@@ -187,11 +187,12 @@ const loader = (
 };
 
 const getUserData = (user) => {
+  const { displayName, email, uid, photoURL } = user;
   return {
     token: user.accessToken,
-    name: user.reloadUserInfo.displayName,
-    photo: user.reloadUserInfo.photoUrl,
-    email: user.reloadUserInfo.email,
+    name: displayName,
+    photo: photoURL,
+    email: email,
   };
 };
 

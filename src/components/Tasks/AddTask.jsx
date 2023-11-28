@@ -1,10 +1,10 @@
 import { InlineIcon } from "@iconify/react";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import Swal from "sweetalert2";
 import "./Task.css";
 import { ThemeContext } from "../../context/ThemeContext";
 import { auth, db } from "../../firebase-config";
-import { doc, runTransaction, serverTimestamp } from "firebase/firestore";
+import { doc, runTransaction } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import AppContext from "../../context/AppContext";
 const randomstring = require("randomstring");

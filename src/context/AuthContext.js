@@ -1,6 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 
 const AuthContext = createContext();
 

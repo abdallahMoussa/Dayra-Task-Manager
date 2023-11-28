@@ -9,7 +9,6 @@ import { ThemeContext } from "../../context/ThemeContext";
 import { isOnline, lastSegment } from "../../services/http/connection";
 import Loading from "../../components/UI/Loading";
 import { InlineIcon } from "@iconify/react";
-import AuthContext from "../../context/AuthContext";
 import LocalStore from "../../services/http/localStore";
 
 const Tasks = () => {
