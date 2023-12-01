@@ -80,13 +80,13 @@ const Tasks = () => {
           <Loading />
         </div>
       ) : data.length ? (
-        <div className="tasks w-full mt-10 flex flex-col">
+        <div className="tasks w-full mt-10 flex flex-col no-transition">
           {data.map((task) => (
             <Task key={task.id} task={task} />
           ))}
         </div>
       ) : (
-        <div className="w-full h-full text-2xl  dark:text-teal-500 text-teal-900 flex justify-center items-center">
+        <div className="w-full h-full text-2xl  dark:text-teal-500 text-teal-900 flex justify-center items-center no-transition">
           <span className=" ">No {path == "tasks" ? "" : path} tasks</span>
           <InlineIcon icon="iconoir:file-not-found" className="mx-2" />
         </div>

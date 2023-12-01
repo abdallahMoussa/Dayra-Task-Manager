@@ -14,3 +14,7 @@ body {
 *{
   transition: .5s;
 }
+
+.no-transition{
+  transition: 0s !important;
+}

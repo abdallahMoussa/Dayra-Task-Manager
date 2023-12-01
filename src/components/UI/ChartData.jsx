@@ -107,8 +107,8 @@ const TaskChartLast7Days = () => {
   }, [isArabic]);
 
   return (
-    <div className="m-auto h-[75vh] flex-col  ">
-      <canvas ref={chartRef} className="w-full h-[70vh]"></canvas>
+    <div className="m-auto h-[70vh] flex-col  ">
+      <canvas ref={chartRef} className="w-full h-[63vh]"></canvas>
       <span className="mt-5 block text-slate-700 dark:text-slate-400">
         {trans("Hint: it`s a static data", "ملحوظه : هذه بيانات ثابته")}
       </span>
