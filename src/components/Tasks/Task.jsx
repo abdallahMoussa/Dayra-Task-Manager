@@ -169,7 +169,7 @@ const Task = ({ task }) => {
       {data ? (
         <div
           dir={direction}
-          className="w-[90%] flex flex-col items-start justify-start p-2 mx-5 my-2  shadow-black  rounded-md drop-shadow-sm bg-slate-300 dark:bg-slate-800/80"
+          className="w-[90%] no-transition flex flex-col items-start justify-start p-2 mx-5 my-2  shadow-black  rounded-md drop-shadow-sm bg-slate-300 dark:bg-slate-800/80"
         >
           <div className="flex justify-between w-full">
             <span className="md:text-2xl font-bold dark:text-teal-600 text-teal-700">

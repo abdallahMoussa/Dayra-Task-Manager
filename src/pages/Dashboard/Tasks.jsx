@@ -16,9 +16,11 @@ const Tasks = () => {
   const [data, setData] = useState([]);
   const { trans } = useContext(ThemeContext);
   const [isLoading, setIsLoading] = useState(true);
+  const [isDataHandling, setIsDataHandling] = useState(true);
   const path = lastSegment();
 
   const dataHandler = () => {
+    setIsDataHandling(true);
     let temp = [...tasks];
     if (path == "completed") {
       temp = tasks.filter((task) => task.completed);
@@ -26,7 +28,9 @@ const Tasks = () => {
       temp = tasks.filter((task) => !task.completed);
     }
     setData((prev) => temp);
-    setIsLoading(false);
+    setTimeout(() => {
+      setIsDataHandling(false);
+    }, 100);
   };
 
   useEffect(() => {
@@ -34,6 +38,7 @@ const Tasks = () => {
   }, [path, tasks]);
 
   const fetchTasks = async () => {
+    setIsLoading(true);
     try {
       const currentUser = auth.currentUser;
 
@@ -51,8 +56,8 @@ const Tasks = () => {
       }
     } catch (e) {
       toast.error(trans("unexpected error occurred", "وقع خطأ تحميل البيانات"));
-      setIsLoading(false);
     }
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -66,7 +71,7 @@ const Tasks = () => {
           setTasks(tempTasks);
         }
       }
-    }, 500);
+    }, 1000);
   }, []);
   return (
     <div className="w-full h-screen">
@@ -75,11 +80,11 @@ const Tasks = () => {
         setFilteredTasks={setData}
         setIsLoading={setIsLoading}
       />
-      {isLoading ? (
+      {isLoading || isDataHandling ? (
         <div className="w-full h-full flex justify-center">
           <Loading />
         </div>
-      ) : data.length ? (
+      ) : data.length > 0 ? (
         <div className="tasks w-full mt-10 flex flex-col no-transition">
           {data.map((task) => (
             <Task key={task.id} task={task} />
